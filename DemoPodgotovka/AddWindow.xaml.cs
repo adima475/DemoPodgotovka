@@ -23,5 +23,10 @@ namespace DemoPodgotovka
         {
             InitializeComponent();
         }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

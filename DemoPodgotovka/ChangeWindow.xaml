@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DemoPodgotovka"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Окно изменения" Height="521" Width="500">
+        Title="Окно изменения" Height="525" Width="399">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -23,61 +23,61 @@
         <DockPanel Grid.Row="0" Margin="20,0,20,0">
             <TextBlock Text="Название" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox Name="Title" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="TitleTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="1" Margin="20,0,20,0">
             <TextBlock Text="Вид" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox Name="Titl" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="TypeTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="2" Margin="20,0,20,0">
             <TextBlock Text="Год" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="YearTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="3" Margin="20,0,20,0">
             <TextBlock Text="Объем бака" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="TankValueTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="4" Margin="20,0,20,0">
             <TextBlock Text="Вместимость" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="PeoplesTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="5" Margin="20,0,20,0">
             <TextBlock Text="Тип руля" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="SteeringTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="6" Margin="20,0,20,0">
             <TextBlock Text="Цена за сутки" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="PriceTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <DockPanel Grid.Row="7" Margin="20,0,20,0">
             <TextBlock Text="Описание" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
             <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
+                <TextBox Name="DescriptionTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
             </Border>
         </DockPanel>
 
         <Border Padding="5" Background="Blue" CornerRadius="5" Grid.Row="9" Width="100" HorizontalAlignment="Right" Margin="0,10,20,15" >
-            <Button Content="Изменить" BorderThickness="0" Background="Transparent" Foreground="White" Height="25"/>
+            <Button Name="EditButton" Content="Изменить" BorderThickness="0" Background="Transparent" Foreground="White" Height="25" Click="editButton_Click" />
         </Border>
     </Grid>
 </Window>
