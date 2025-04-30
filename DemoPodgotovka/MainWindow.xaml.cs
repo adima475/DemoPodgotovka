@@ -128,12 +128,6 @@ namespace DemoPodgotovka
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private void add_button_click(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();

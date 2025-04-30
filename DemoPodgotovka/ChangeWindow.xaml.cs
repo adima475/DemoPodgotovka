@@ -71,14 +71,14 @@ namespace DemoPodgotovka
                 using var reader = command.ExecuteReader();
                 reader.Read();
 
-                    TitleTextBox.Text = reader["car_name"].ToString();
-                    TypeComboBox.SelectedIndex = Convert.ToInt32(reader["car_type"]) - 1;
-                    YearTextBox.Text = reader["car_year"].ToString();
-                    TankValueTextBox.Text = reader["car_km"].ToString();
-                    PeoplesTextBox.Text = reader["car_value"].ToString();
-                    TypeRyleComboBox.Text = reader["car_steering"].ToString();
-                    PriceTextBox.Text = reader["car_price"].ToString();
-                    DescriptionTextBox.Text = reader["car_desc"].ToString(); 
+                TitleTextBox.Text = reader["car_name"].ToString();
+                TypeComboBox.SelectedIndex = Convert.ToInt32(reader["car_type"]) - 1;
+                YearTextBox.Text = reader["car_year"].ToString();
+                TankValueTextBox.Text = reader["car_km"].ToString();
+                PeoplesTextBox.Text = reader["car_value"].ToString();
+                TypeRyleComboBox.Text = reader["car_steering"].ToString();
+                PriceTextBox.Text = reader["car_price"].ToString();
+                DescriptionTextBox.Text = reader["car_desc"].ToString();
             }
             catch (Exception ex)
             {
@@ -90,51 +90,37 @@ namespace DemoPodgotovka
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                int index = TypeComboBox.SelectedIndex;
-                index++;
-                using var command = DbConnectionManager.Command(
-                    @"UPDATE public.avto_import SET
+            int index = TypeComboBox.SelectedIndex;
+            index++;
+            using var command = DbConnectionManager.Command(
+                @"UPDATE public.avto_import SET
                     car_name = @car_name, car_type = @car_type, car_year = @car_year, car_km = @car_km, 
                     car_value =  @car_value, car_steering = @car_steering, car_price = @car_price, car_desc = @car_desc
                     WHERE car_id = @id"
-                );
+            );
 
-                command.Parameters.AddWithValue("@id", id_cars);
-                command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-                command.Parameters.AddWithValue("@car_type", index); // Выбранный тип
-                command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
-                command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
-                command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
-                command.Parameters.AddWithValue("@car_steering", TypeRyleComboBox.Text);
-                command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
-                command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
+            command.Parameters.AddWithValue("@id", id_cars);
+            command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
+            command.Parameters.AddWithValue("@car_type", index); // Выбранный тип
+            command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
+            command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
+            command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
+            command.Parameters.AddWithValue("@car_steering", TypeRyleComboBox.Text);
+            command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
+            command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
 
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Партнёр успешно добавлен!");
-                    OnDataChange?.Invoke(); // Вызов события обновления списка партнёров
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка при добавлении партнёра.");
-                }
-            }
-
-            catch (Exception ex)
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected > 0)
             {
-                if (ex.Message.Contains("23505")) // PostgreSQL сообщает об ошибке уникальности
-                {
-                    MessageBox.Show("Ошибка: ИНН уже существует в базе данных.");
-                }
-                else
-                {
-                    MessageBox.Show($"Ошибка сохранения данных: {ex.Message}");
-                }
+                MessageBox.Show("Партнёр успешно изменён!");
+                OnDataChange?.Invoke(); // Вызов события обновления списка партнёров
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при изменении партнёра.");
             }
         }
     }
 }
+

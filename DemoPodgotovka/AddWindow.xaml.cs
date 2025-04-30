@@ -88,14 +88,7 @@ namespace DemoPodgotovka
 
             catch (Exception ex)
             {
-                if (ex.Message.Contains("23505")) // PostgreSQL сообщает об ошибке уникальности
-                {
-                    MessageBox.Show("Ошибка: ИНН уже существует в базе данных.");
-                }
-                else
-                {
-                    MessageBox.Show($"Ошибка сохранения данных: {ex.Message}");
-                }
+                MessageBox.Show($"Ошибка сохранения данных: {ex.Message}");
             }
         }
     }
