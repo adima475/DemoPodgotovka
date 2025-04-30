@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,18 +37,19 @@ namespace DemoPodgotovka
 
             try
             {
-                var cmd = DbConnectionManager.Command(@"SELECT 
-                                                            title, 
-                                                            kind, 
-                                                            valuebenzin, 
-                                                            vmestimost, 
-                                                            ruletype, 
-                                                            priceday
-	                                                            FROM public.avto;");
+                var cmd = DbConnectionManager.Command(@"SELECT
+                    car_name,
+                    type_name, 
+                    car_km, 
+                    image_url, 
+                    car_value,
+                    car_steering, 
+                    car_price 
+                    FROM avto_import ai JOIN car_type ct ON ct.type_id = ai.car_type");
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    string urlbool = "/Resource/Cars/" + reader["title"].ToString()! + ".png";
+                    string urlbool = "/Resource/Cars/" + reader["car_name"].ToString()! + ".png";
                     if(!ResourceExists(urlbool))
                     {
                         urlbool = "/Resource/noimage.png";
@@ -54,12 +57,12 @@ namespace DemoPodgotovka
 
                     Cars.Add(new Car
                     {
-                        Name = reader["title"].ToString()!,
-                        Kind = reader["kind"].ToString()!,
-                        Valuebenzin = reader["valuebenzin"].ToString()!,
-                        Vmestimost = reader["vmestimost"].ToString()!,
-                        Ruletype = reader["ruletype"].ToString()!,
-                        Price = "$" + reader["priceday"].ToString()! + "/",
+                        Name = reader["car_name"].ToString()!,
+                        Kind = reader["type_name"].ToString()!,
+                        Valuebenzin = reader["car_km"].ToString()!,
+                        Vmestimost = reader["car_value"].ToString()!,
+                        Ruletype = reader["car_steering"].ToString()!,
+                        Price = "$" + reader["car_price"].ToString()! + "/",
                         Url = urlbool
                     }); 
                 }
@@ -119,9 +122,16 @@ namespace DemoPodgotovka
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private void add_button_click(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();
+            addWindow.OnDataAdded += LoadData; // Подписка на событие обновления данных
             addWindow.ShowDialog();
         }
 

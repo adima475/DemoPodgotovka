@@ -12,9 +12,9 @@ namespace DemoPodgotovka
         public static NpgsqlConnection Connection = new NpgsqlConnection(@"
         Host=localhost;
         Port=5432;
-        Database=DemoExam;
+        Database=DemoExamen;
         Username=postgres;
-        Password=1234;
+        Password=123;
         ");
 
         public static void Initialize()

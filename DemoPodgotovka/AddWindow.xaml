@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DemoPodgotovka"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="Окно добавления" Height="520" Width="380">
+        Title="Окно добавления" Height="520" Width="391">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -29,9 +29,7 @@
 
         <DockPanel Grid.Row="1" Margin="20,0,20,0">
             <TextBlock Text="Вид" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
-            <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox Name="TypeTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
-            </Border>
+            <ComboBox Name="TypeComboBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0" Width="200" Height="30" HorizontalAlignment="Right"/>
         </DockPanel>
 
         <DockPanel Grid.Row="2" Margin="20,0,20,0">
