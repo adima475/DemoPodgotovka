@@ -55,9 +55,7 @@
 
         <DockPanel Grid.Row="5" Margin="20,0,20,0">
             <TextBlock Text="Тип руля" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
-            <Border Padding="5" Width="200" Height="30" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" HorizontalAlignment="Right">
-                <TextBox Name="SteeringTextBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0"/>
-            </Border>
+            <ComboBox Name="TypeRyleBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0" Width="200" Height="30" HorizontalAlignment="Right"/>
         </DockPanel>
 
         <DockPanel Grid.Row="6" Margin="20,0,20,0">

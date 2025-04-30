@@ -38,6 +38,7 @@ namespace DemoPodgotovka
             try
             {
                 var cmd = DbConnectionManager.Command(@"SELECT
+                    car_id,
                     car_name,
                     type_name, 
                     car_km, 
@@ -45,7 +46,8 @@ namespace DemoPodgotovka
                     car_value,
                     car_steering, 
                     car_price 
-                    FROM avto_import ai JOIN car_type ct ON ct.type_id = ai.car_type");
+                    FROM avto_import ai JOIN car_type ct ON ct.type_id = ai.car_type
+                    Order by car_name");
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -57,6 +59,7 @@ namespace DemoPodgotovka
 
                     Cars.Add(new Car
                     {
+                        Id = Convert.ToInt32(reader["car_id"]),
                         Name = reader["car_name"].ToString()!,
                         Kind = reader["type_name"].ToString()!,
                         Valuebenzin = reader["car_km"].ToString()!,
@@ -65,7 +68,9 @@ namespace DemoPodgotovka
                         Price = "$" + reader["car_price"].ToString()! + "/",
                         Url = urlbool
                     }); 
+
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -88,6 +93,7 @@ namespace DemoPodgotovka
 
         public class Car
         {
+            public int Id {  get; set; }
             public string Name { get; set; }
             public string Kind { get; set; }
             public string Valuebenzin { get; set; }
@@ -135,10 +141,16 @@ namespace DemoPodgotovka
             addWindow.ShowDialog();
         }
 
-        private void change_button_click(object sender, RoutedEventArgs e)
+        private void CarsBox_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ChangeWindow changeWindow = new ChangeWindow();
-            changeWindow.ShowDialog();
+            if(CarsBox.SelectedItem is Car selectedItem)
+            {
+                int id = selectedItem.Id;
+
+                ChangeWindow changeWindow = new ChangeWindow(id);
+                changeWindow.OnDataChange += LoadData;
+                changeWindow.ShowDialog();
+            }
         }
     }
 }

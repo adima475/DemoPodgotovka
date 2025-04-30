@@ -44,6 +44,11 @@ namespace DemoPodgotovka
             TypeComboBox.Items.Add("Люкс-седан");
             TypeComboBox.Items.Add("Пикап");
             TypeComboBox.SelectedIndex = -1; // Оставляем поле пустым (по умолчанию)
+
+            TypeRyleBox.Items.Add("Правый");
+            TypeRyleBox.Items.Add("Левый");
+            TypeRyleBox.SelectedIndex = -1;
+
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +69,7 @@ namespace DemoPodgotovka
                 command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
                 command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
                 command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
-                command.Parameters.AddWithValue("@car_steering", SteeringTextBox.Text);
+                command.Parameters.AddWithValue("@car_steering", TypeRyleBox.Text);
                 command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
                 command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
 
