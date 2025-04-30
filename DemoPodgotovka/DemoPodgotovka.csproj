@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resource\Icons\Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resource\Cars\Audi A6.png" />
+    <None Remove="Resource\Cars\Audi R8 V10 Performance.png" />
+    <None Remove="Resource\Cars\BMW M8 Competition.png" />
+    <None Remove="Resource\Cars\BMW X5.png" />
+    <None Remove="Resource\Cars\Chevrolet Corvette C8 Stingray.png" />
+    <None Remove="Resource\Cars\Chevrolet Tahoe.png" />
+    <None Remove="Resource\Cars\Ferrari 488 GTB.png" />
+    <None Remove="Resource\Cars\Ford F-150 Raptor.png" />
+    <None Remove="Resource\Cars\Ford Focus.png" />
+    <None Remove="Resource\Cars\Ford Mustang Shelby GT500.png" />
+    <None Remove="Resource\Cars\Hyundai Solaris.png" />
+    <None Remove="Resource\Cars\Jeep Wrangler Rubicon.png" />
+    <None Remove="Resource\Cars\Kia Rio.png" />
+    <None Remove="Resource\Cars\Lada Niva Travel.png" />
+    <None Remove="Resource\Cars\Lada Vesta.png" />
+    <None Remove="Resource\Cars\Lamborghini Huracán EVO.png" />
+    <None Remove="Resource\Cars\Lexus RX.png" />
+    <None Remove="Resource\Cars\McLaren 720S.png" />
+    <None Remove="Resource\Cars\Mercedes-AMG GT R.png" />
+    <None Remove="Resource\Cars\Mercedes-Benz E-Class.png" />
+    <None Remove="Resource\Cars\Mini Cooper JCW.png" />
+    <None Remove="Resource\Cars\Mitsubishi Outlander.png" />
+    <None Remove="Resource\Cars\Nissan GT-R Nismo.png" />
+    <None Remove="Resource\Cars\Nissan Qashqai.png" />
+    <None Remove="Resource\Cars\Polestar 2.png" />
+    <None Remove="Resource\Cars\Porsche 911 Turbo S.png" />
+    <None Remove="Resource\Cars\Renault Duster.png" />
+    <None Remove="Resource\Cars\Rolls-Royce Ghost.png" />
+    <None Remove="Resource\Cars\Skoda Octavia.png" />
+    <None Remove="Resource\Cars\Tesla Model S Plaid.png" />
+    <None Remove="Resource\Cars\Toyota Camry.png" />
+    <None Remove="Resource\Cars\Toyota Land Cruiser 300.png" />
+    <None Remove="Resource\Cars\Volkswagen Polo.png" />
+    <None Remove="Resource\Icons\Car.png" />
+    <None Remove="Resource\Icons\gas-station.png" />
+    <None Remove="Resource\Icons\heart.png" />
+    <None Remove="Resource\Icons\HeartRed.png" />
+    <None Remove="Resource\Icons\Logo.png" />
+    <None Remove="Resource\Icons\Menu.png" />
+    <None Remove="Resource\Icons\profile-2user.png" />
+    <None Remove="Resource\Icons\Search.png" />
+    <None Remove="Resource\noimage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resource\Icons\Logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Cars\Audi A6.png" />
+    <Resource Include="Resource\Cars\Audi R8 V10 Performance.png" />
+    <Resource Include="Resource\Cars\BMW M8 Competition.png" />
+    <Resource Include="Resource\Cars\BMW X5.png" />
+    <Resource Include="Resource\Cars\Chevrolet Corvette C8 Stingray.png" />
+    <Resource Include="Resource\Cars\Chevrolet Tahoe.png" />
+    <Resource Include="Resource\Cars\Ferrari 488 GTB.png" />
+    <Resource Include="Resource\Cars\Ford F-150 Raptor.png" />
+    <Resource Include="Resource\Cars\Ford Focus.png" />
+    <Resource Include="Resource\Cars\Ford Mustang Shelby GT500.png" />
+    <Resource Include="Resource\Cars\Hyundai Solaris.png" />
+    <Resource Include="Resource\Cars\Jeep Wrangler Rubicon.png" />
+    <Resource Include="Resource\Cars\Kia Rio.png" />
+    <Resource Include="Resource\Cars\Lada Niva Travel.png" />
+    <Resource Include="Resource\Cars\Lada Vesta.png" />
+    <Resource Include="Resource\Cars\Lamborghini Huracán EVO.png" />
+    <Resource Include="Resource\Cars\Lexus RX.png" />
+    <Resource Include="Resource\Cars\McLaren 720S.png" />
+    <Resource Include="Resource\Cars\Mercedes-AMG GT R.png" />
+    <Resource Include="Resource\Cars\Mercedes-Benz E-Class.png" />
+    <Resource Include="Resource\Cars\Mini Cooper JCW.png" />
+    <Resource Include="Resource\Cars\Mitsubishi Outlander.png" />
+    <Resource Include="Resource\Cars\Nissan GT-R Nismo.png" />
+    <Resource Include="Resource\Cars\Nissan Qashqai.png" />
+    <Resource Include="Resource\Cars\Polestar 2.png" />
+    <Resource Include="Resource\Cars\Porsche 911 Turbo S.png" />
+    <Resource Include="Resource\Cars\Renault Duster.png" />
+    <Resource Include="Resource\Cars\Rolls-Royce Ghost.png" />
+    <Resource Include="Resource\Cars\Skoda Octavia.png" />
+    <Resource Include="Resource\Cars\Tesla Model S Plaid.png" />
+    <Resource Include="Resource\Cars\Toyota Camry.png" />
+    <Resource Include="Resource\Cars\Toyota Land Cruiser 300.png" />
+    <Resource Include="Resource\Cars\Volkswagen Polo.png" />
+    <Resource Include="Resource\Icons\Car.png" />
+    <Resource Include="Resource\Icons\gas-station.png" />
+    <Resource Include="Resource\Icons\heart.png" />
+    <Resource Include="Resource\Icons\HeartRed.png" />
+    <Resource Include="Resource\Icons\Logo.png" />
+    <Resource Include="Resource\Icons\Menu.png" />
+    <Resource Include="Resource\Icons\profile-2user.png" />
+    <Resource Include="Resource\Icons\Search.png" />
+    <Resource Include="Resource\noimage.png" />
+  </ItemGroup>
+
+</Project>
