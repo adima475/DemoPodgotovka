@@ -48,7 +48,7 @@ namespace DemoPodgotovka
             TypeComboBox.Items.Add("Люкс-седан");
             TypeComboBox.Items.Add("Пикап");
 
-            TypeRyleComboBox.Items.Add("Праый");
+            TypeRyleComboBox.Items.Add("Правый");
             TypeRyleComboBox.Items.Add("Левый");
 
             try
