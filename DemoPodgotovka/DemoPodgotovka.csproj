@@ -25,7 +25,6 @@
     <None Remove="Resource\Cars\Kia Rio.png" />
     <None Remove="Resource\Cars\Lada Niva Travel.png" />
     <None Remove="Resource\Cars\Lada Vesta.png" />
-    <None Remove="Resource\Cars\Lamborghini Huracán EVO.png" />
     <None Remove="Resource\Cars\Lexus RX.png" />
     <None Remove="Resource\Cars\McLaren 720S.png" />
     <None Remove="Resource\Cars\Mercedes-AMG GT R.png" />
@@ -78,7 +77,7 @@
     <Resource Include="Resource\Cars\Kia Rio.png" />
     <Resource Include="Resource\Cars\Lada Niva Travel.png" />
     <Resource Include="Resource\Cars\Lada Vesta.png" />
-    <Resource Include="Resource\Cars\Lamborghini Huracán EVO.png" />
+    <Resource Include="Resource\Cars\Lamborghini Huracan EVO.png" />
     <Resource Include="Resource\Cars\Lexus RX.png" />
     <Resource Include="Resource\Cars\McLaren 720S.png" />
     <Resource Include="Resource\Cars\Mercedes-AMG GT R.png" />
