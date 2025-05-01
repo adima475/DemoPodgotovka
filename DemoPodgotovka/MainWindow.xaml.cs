@@ -82,8 +82,7 @@ namespace DemoPodgotovka
         {
             try
             {
-                var resourceInfo = Application.GetResourceStream(new Uri(relativeUri, UriKind.Relative));
-                return resourceInfo != null;
+                return Application.GetResourceStream(new Uri(relativeUri, UriKind.Relative)) != null;
             }
             catch
             {
@@ -93,7 +92,7 @@ namespace DemoPodgotovka
 
         public class Car
         {
-            public int Id {  get; set; }
+            public int Id { get; set; }
             public string Name { get; set; }
             public string Kind { get; set; }
             public string Valuebenzin { get; set; }
@@ -139,9 +138,7 @@ namespace DemoPodgotovka
         {
             if(CarsBox.SelectedItem is Car selectedItem)
             {
-                int id = selectedItem.Id;
-
-                ChangeWindow changeWindow = new ChangeWindow(id);
+                ChangeWindow changeWindow = new ChangeWindow(selectedItem.Id);
                 changeWindow.OnDataChange += LoadData;
                 changeWindow.ShowDialog();
             }
