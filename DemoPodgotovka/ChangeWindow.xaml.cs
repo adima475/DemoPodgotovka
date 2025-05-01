@@ -35,18 +35,7 @@ namespace DemoPodgotovka
         {
 
             // Добавляем фиксированные типы организаций в ComboBox
-            TypeComboBox.Items.Add("Седан");
-            TypeComboBox.Items.Add("Хэтчбек");
-            TypeComboBox.Items.Add("Внедорожник");
-            TypeComboBox.Items.Add("Кроссовер");
-            TypeComboBox.Items.Add("Лифтбек");
-            TypeComboBox.Items.Add("Спорткар");
-            TypeComboBox.Items.Add("Суперкар");
-            TypeComboBox.Items.Add("Гран Туризмо");
-            TypeComboBox.Items.Add("Мускулкар");
-            TypeComboBox.Items.Add("Электрокар");
-            TypeComboBox.Items.Add("Люкс-седан");
-            TypeComboBox.Items.Add("Пикап");
+            DbConnectionManager.LoadComboBox(TypeComboBox);
 
             TypeRyleComboBox.Items.Add("Правый");
             TypeRyleComboBox.Items.Add("Левый");
@@ -72,7 +61,7 @@ namespace DemoPodgotovka
                 reader.Read();
 
                 TitleTextBox.Text = reader["car_name"].ToString();
-                TypeComboBox.SelectedIndex = Convert.ToInt32(reader["car_type"]) - 1;
+                TypeComboBox.SelectedValue = Convert.ToInt32(reader["car_type"]);
                 YearTextBox.Text = reader["car_year"].ToString();
                 TankValueTextBox.Text = reader["car_km"].ToString();
                 PeoplesTextBox.Text = reader["car_value"].ToString();
@@ -90,8 +79,7 @@ namespace DemoPodgotovka
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            int index = TypeComboBox.SelectedIndex;
-            index++;
+            var index = TypeComboBox.SelectedItem;
             using var command = DbConnectionManager.Command(
                 @"UPDATE public.avto_import SET
                     car_name = @car_name, car_type = @car_type, car_year = @car_year, car_km = @car_km, 
@@ -101,7 +89,7 @@ namespace DemoPodgotovka
 
             command.Parameters.AddWithValue("@id", id_cars);
             command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-            command.Parameters.AddWithValue("@car_type", index); // Выбранный тип
+            command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
             command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
             command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
             command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));

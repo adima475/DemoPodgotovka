@@ -28,21 +28,11 @@ namespace DemoPodgotovka
             LoadPartnerTypes();
         }
 
+
         private void LoadPartnerTypes()
         {
-            // Добавляем фиксированные типы организаций в ComboBox
-            TypeComboBox.Items.Add("Седан");
-            TypeComboBox.Items.Add("Хэтчбек");
-            TypeComboBox.Items.Add("Внедорожник");
-            TypeComboBox.Items.Add("Кроссовер");
-            TypeComboBox.Items.Add("Лифтбек");
-            TypeComboBox.Items.Add("Спорткар");
-            TypeComboBox.Items.Add("Суперкар");
-            TypeComboBox.Items.Add("Гран Туризмо");
-            TypeComboBox.Items.Add("Мускулкар");
-            TypeComboBox.Items.Add("Электрокар");
-            TypeComboBox.Items.Add("Люкс-седан");
-            TypeComboBox.Items.Add("Пикап");
+            DbConnectionManager.LoadComboBox(TypeComboBox);
+
             TypeComboBox.SelectedIndex = -1; // Оставляем поле пустым (по умолчанию)
 
             TypeRyleBox.Items.Add("Правый");
@@ -55,8 +45,7 @@ namespace DemoPodgotovka
         {
             try
             {
-                int index = TypeComboBox.SelectedIndex;
-                index++;
+                var index = TypeComboBox.SelectedItem;
                 using var command = DbConnectionManager.Command(
                     @"INSERT INTO public.avto_import 
                     (car_name, car_type, car_year, car_km, 
@@ -65,7 +54,7 @@ namespace DemoPodgotovka
                 );
 
                 command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-                command.Parameters.AddWithValue("@car_type", index); // Выбранный тип
+                command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
                 command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
                 command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
                 command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
