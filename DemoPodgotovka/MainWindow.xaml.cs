@@ -28,7 +28,6 @@ namespace DemoPodgotovka
             DataContext = this;
             DbConnectionManager.Initialize();
             LoadData();
-
         }
 
         public static void LoadData()

@@ -62,22 +62,17 @@ namespace DemoPodgotovka
                 command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
                 command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
 
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
+                if (command.ExecuteNonQuery() > 0)
                 {
-                    MessageBox.Show("Партнёр успешно добавлен!");
-                    OnDataAdded?.Invoke(); // Вызов события обновления списка партнёров
+                    MessageBox.Show("Машина успешно добавлен!");
+                    OnDataAdded?.Invoke(); // Вызов события обновления списка машин
                     this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка при добавлении партнёра.");
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка сохранения данных: {ex.Message}");
+                MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
     }

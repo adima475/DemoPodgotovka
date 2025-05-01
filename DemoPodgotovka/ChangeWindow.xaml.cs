@@ -37,9 +37,6 @@ namespace DemoPodgotovka
             // Добавляем фиксированные типы организаций в ComboBox
             DbConnectionManager.LoadComboBox(TypeComboBox);
 
-            TypeRyleComboBox.Items.Add("Правый");
-            TypeRyleComboBox.Items.Add("Левый");
-
             try
             {
                 using var command = DbConnectionManager.Command(@"SELECT
@@ -79,34 +76,36 @@ namespace DemoPodgotovka
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            var index = TypeComboBox.SelectedItem;
-            using var command = DbConnectionManager.Command(
-                @"UPDATE public.avto_import SET
+            try
+            {
+                var index = TypeComboBox.SelectedItem;
+                using var command = DbConnectionManager.Command(
+                    @"UPDATE public.avto_import SET
                     car_name = @car_name, car_type = @car_type, car_year = @car_year, car_km = @car_km, 
                     car_value =  @car_value, car_steering = @car_steering, car_price = @car_price, car_desc = @car_desc
                     WHERE car_id = @id"
-            );
+                );
 
-            command.Parameters.AddWithValue("@id", id_cars);
-            command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-            command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
-            command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
-            command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
-            command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
-            command.Parameters.AddWithValue("@car_steering", TypeRyleComboBox.Text);
-            command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
-            command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
+                command.Parameters.AddWithValue("@id", id_cars);
+                command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
+                command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
+                command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
+                command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
+                command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
+                command.Parameters.AddWithValue("@car_steering", TypeRyleComboBox.Text);
+                command.Parameters.AddWithValue("@car_price", Convert.ToInt32(PriceTextBox.Text));
+                command.Parameters.AddWithValue("@car_desc", DescriptionTextBox.Text);
 
-            int rowsAffected = command.ExecuteNonQuery();
-            if (rowsAffected > 0)
-            {
-                MessageBox.Show("Партнёр успешно изменён!");
-                OnDataChange?.Invoke(); // Вызов события обновления списка партнёров
-                this.Close();
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Машина успешно изменёна!");
+                    OnDataChange?.Invoke(); // Вызов события обновления списка машин
+                    this.Close();
+                }
             }
-            else
-            {
-                MessageBox.Show("Ошибка при изменении партнёра.");
+            catch (Exception ex) 
+            { 
+                MessageBox.Show("Ошибка:" + ex.Message); 
             }
         }
     }

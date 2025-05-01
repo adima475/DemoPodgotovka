@@ -55,7 +55,10 @@
 
         <DockPanel Grid.Row="5" Margin="20,0,20,0">
             <TextBlock Text="Тип руля" Padding="15" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left"/>
-            <ComboBox Name="TypeRyleComboBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0" Width="200" Height="30" HorizontalAlignment="Right"/>
+            <ComboBox Name="TypeRyleComboBox" FontSize="15" FontWeight="Bold" Background="Transparent" BorderThickness="0" Width="200" Height="30" HorizontalAlignment="Right">
+                <ComboBoxItem Content="Левый"/>
+                <ComboBoxItem Content="Правый" />
+            </ComboBox>
         </DockPanel>
 
         <DockPanel Grid.Row="6" Margin="20,0,20,0">
