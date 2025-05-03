@@ -47,6 +47,7 @@ namespace DemoPodgotovka
                     car_price 
                     FROM avto_import ai JOIN car_type ct ON ct.type_id = ai.car_type
                     Order by car_name");
+
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -129,7 +130,7 @@ namespace DemoPodgotovka
         private void add_button_click(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();
-            addWindow.OnDataAdded += LoadData; // Подписка на событие обновления данных
+            addWindow.Closed += (sender, e) => LoadData();
             addWindow.ShowDialog();
         }
 
@@ -138,7 +139,7 @@ namespace DemoPodgotovka
             if(CarsBox.SelectedItem is Car selectedItem)
             {
                 ChangeWindow changeWindow = new ChangeWindow(selectedItem.Id);
-                changeWindow.OnDataChange += LoadData;
+                changeWindow.Closed += (sender, e) => LoadData();
                 changeWindow.ShowDialog();
             }
         }

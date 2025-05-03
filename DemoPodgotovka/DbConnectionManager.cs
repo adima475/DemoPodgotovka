@@ -13,9 +13,9 @@ namespace DemoPodgotovka
         public static NpgsqlConnection Connection = new NpgsqlConnection(@"
         Host=localhost;
         Port=5432;
-        Database=DemoExamen;
+        Database=DemoExam;
         Username=postgres;
-        Password=123;
+        Password=1234;
         ");
 
         public static void Initialize()
@@ -35,19 +35,21 @@ namespace DemoPodgotovka
         }
 
 
-        public static void LoadComboBox(ComboBox pidor)
+        public static void LoadComboBox(ComboBox combobox)
         {
-            Dictionary<string, int> MyComboBox = new Dictionary<string, int>();
-            var cmd = DbConnectionManager.Command("SELECT type_id, type_name from car_type");
+            var items = new List<object>();
+
+            var cmd = Command(@"SELECT type_id, type_name
+	                            FROM car_type;");
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                MyComboBox.Add(reader.GetString(1), reader.GetInt32(0));
-
+                items.Add(new { Key = reader.GetInt32(0), Value = reader.GetString(1) });
             }
-            pidor.ItemsSource = MyComboBox;
-            pidor.DisplayMemberPath = "Key";
-            pidor.SelectedValuePath = "Value";
+            combobox.ItemsSource = items;
+            combobox.DisplayMemberPath = "Value";
+            combobox.SelectedValuePath = "Key";
+
             reader.Close();
         }
     }

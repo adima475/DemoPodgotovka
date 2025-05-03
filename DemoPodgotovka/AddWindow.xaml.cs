@@ -24,28 +24,13 @@ namespace DemoPodgotovka
         public AddWindow()
         {
             InitializeComponent();
-
-            LoadPartnerTypes();
-        }
-
-
-        private void LoadPartnerTypes()
-        {
             DbConnectionManager.LoadComboBox(TypeComboBox);
-
-            TypeComboBox.SelectedIndex = -1; // Оставляем поле пустым (по умолчанию)
-
-            TypeRyleBox.Items.Add("Правый");
-            TypeRyleBox.Items.Add("Левый");
-            TypeRyleBox.SelectedIndex = -1;
-
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var index = TypeComboBox.SelectedItem;
                 using var command = DbConnectionManager.Command(
                     @"INSERT INTO public.avto_import 
                     (car_name, car_type, car_year, car_km, 
@@ -54,7 +39,7 @@ namespace DemoPodgotovka
                 );
 
                 command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-                command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
+                command.Parameters.AddWithValue("@car_type", TypeComboBox.SelectedValue); // Выбранный тип
                 command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
                 command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
                 command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
@@ -65,7 +50,6 @@ namespace DemoPodgotovka
                 if (command.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show("Машина успешно добавлен!");
-                    OnDataAdded?.Invoke(); // Вызов события обновления списка машин
                     this.Close();
                 }
             }

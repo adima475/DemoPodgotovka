@@ -78,7 +78,6 @@ namespace DemoPodgotovka
         {
             try
             {
-                var index = TypeComboBox.SelectedItem;
                 using var command = DbConnectionManager.Command(
                     @"UPDATE public.avto_import SET
                     car_name = @car_name, car_type = @car_type, car_year = @car_year, car_km = @car_km, 
@@ -88,7 +87,7 @@ namespace DemoPodgotovka
 
                 command.Parameters.AddWithValue("@id", id_cars);
                 command.Parameters.AddWithValue("@car_name", TitleTextBox.Text);
-                command.Parameters.AddWithValue("@car_type", ((dynamic)index).Value); // Выбранный тип
+                command.Parameters.AddWithValue("@car_type", TypeComboBox.SelectedValue); // Выбранный тип
                 command.Parameters.AddWithValue("@car_year", Convert.ToInt32(YearTextBox.Text));
                 command.Parameters.AddWithValue("@car_km", TankValueTextBox.Text);
                 command.Parameters.AddWithValue("@car_value", Convert.ToInt32(PeoplesTextBox.Text));
@@ -99,7 +98,6 @@ namespace DemoPodgotovka
                 if (command.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show("Машина успешно изменёна!");
-                    OnDataChange?.Invoke(); // Вызов события обновления списка машин
                     this.Close();
                 }
             }
